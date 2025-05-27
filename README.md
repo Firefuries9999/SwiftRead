@@ -1,6 +1,6 @@
 # 🚀 SwiftRead - Speed Reading App
 
-![App Screenshot](screenshot.png)
+![App Screenshot](Screenshot.png)
 
 **Read faster, comprehend better!** SwiftRead is a Python-based speed reading application that helps you read text at customizable speeds while maintaining comprehension. Perfect for students, researchers, and book lovers!
 
