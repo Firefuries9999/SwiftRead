@@ -1,0 +1,27 @@
+name: Build Releases
+
+on: [push, release]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller PyPDF2 python-docx
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --windowed --icon=s.ico swiftread.py
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: SwiftRead-${{ matrix.os }}
+        path: dist/
